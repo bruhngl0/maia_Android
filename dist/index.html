@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>TouchScreen Demo</title>
+		<meta charset=utf-8 />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="/assets/index-a6393447.css">
+	</head>
+    <body>
+        <div id="orientationIndicator">
+            <p>
+                You are currently in portrait mode. Please rotate the screen to landscape mode to access this content.
+            </p>
+            <img src="data:image/png;base64,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" style="width: 6vw; height: 6vw; margin-top: 0.5vh; margin-bottom: 0.5vh;">	
+        </div>
+        <div id="dialogBox">
+
+            <h2>
+                Touch-Screen Demo 
+            </h2>
+
+            <p>
+                <b>Instructions: </b>   
+            </p>
+            <p>
+                Use the red joystick to move and use the blue joystick to look  
+            </p>
+           
+            <button id="start" class="dButton">Start</button>
+        </div>
+
+        <script>
+
+			let oIndicator = $("#orientationIndicator");
+			let dBox = $("#dialogBox");
+            let startButton = $('#start');
+
+			$( document ).ready(function() {
+				if (screen.orientation.type == "portrait-secondary" || screen.orientation.type == "portrait-primary"){
+					oIndicator.css("display", "inline-block");	
+                    dBox.css("display", "none");
+				} else if (screen.orientation.type == "landscape-secondary" || screen.orientation.type == "landscape-primary"){
+					oIndicator.css("display", "none");
+                    dBox.css("display", "inline-block");
+				}
+			});
+
+            screen.orientation.onchange = function(e) {
+				let orientation = screen.orientation.type;
+				console.log(orientation);
+				if (orientation == "landscape-secondary" || orientation == "landscape-primary"){
+					oIndicator.css("display", "none");
+					dBox.css("display", "inline-block");
+                } else if (orientation == "portrait-secondary" || orientation == "portrait-primary"){
+					oIndicator.css("display", "inline-block");
+					dBox.css("display", "none");
+				}
+            }
+
+            startButton.click(function (){
+                window.location.href = "sim.html"
+            });
+        </script>
+    </body>

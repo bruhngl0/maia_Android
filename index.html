@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>TouchScreen Demo</title>
+		<meta charset=utf-8 />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="./CSS/main.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	</head>
+    <body>
+        <div id="orientationIndicator">
+            <p>
+                You are currently in portrait mode. Please rotate the screen to landscape mode to access this content.
+            </p>
+            <img src="images/rotate.png" style="width: 6vw; height: 6vw; margin-top: 0.5vh; margin-bottom: 0.5vh;">	
+        </div>
+        <div id="dialogBox">
+
+            <h2>
+                Touch-Screen Demo 
+            </h2>
+
+            <p>
+                <b>Instructions: </b>   
+            </p>
+            <p>
+                Use the red joystick to move and use the blue joystick to look  
+            </p>
+           
+            <button id="start" class="dButton">Start</button>
+        </div>
+
+        <script>
+
+			let oIndicator = $("#orientationIndicator");
+			let dBox = $("#dialogBox");
+            let startButton = $('#start');
+
+			$( document ).ready(function() {
+				if (screen.orientation.type == "portrait-secondary" || screen.orientation.type == "portrait-primary"){
+					oIndicator.css("display", "inline-block");	
+                    dBox.css("display", "none");
+				} else if (screen.orientation.type == "landscape-secondary" || screen.orientation.type == "landscape-primary"){
+					oIndicator.css("display", "none");
+                    dBox.css("display", "inline-block");
+				}
+			});
+
+            screen.orientation.onchange = function(e) {
+				let orientation = screen.orientation.type;
+				console.log(orientation);
+				if (orientation == "landscape-secondary" || orientation == "landscape-primary"){
+					oIndicator.css("display", "none");
+					dBox.css("display", "inline-block");
+                } else if (orientation == "portrait-secondary" || orientation == "portrait-primary"){
+					oIndicator.css("display", "inline-block");
+					dBox.css("display", "none");
+				}
+            }
+
+            startButton.click(function (){
+                window.location.href = "sim.html"
+            });
+        </script>
+    </body>
